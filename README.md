@@ -5,6 +5,13 @@
 npm install
 ```
 
+### AWS 열기
+```
+(우분투일경우 권한 설정)chmod 400 syuproject_key.pem
+
+ssh -i "syuproject_key.pem" ubuntu@ec2-15-165-197-35.ap-northeast-2.compute.amazonaws.com
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
