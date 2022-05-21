@@ -11,7 +11,10 @@ npm install
 
 ssh -i "syuproject_key.pem" ubuntu@ec2-15-165-197-35.ap-northeast-2.compute.amazonaws.com
 ```
-
+### AWS Web 주소
+```
+http://15.165.197.35/
+```
 ### Compiles and hot-reloads for development
 ```
 npm run serve
