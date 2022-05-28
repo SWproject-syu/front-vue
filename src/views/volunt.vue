@@ -37,10 +37,14 @@
     <!-- 메인 -->
     <div class= "bg">
       <span class = areas>지역 선택</span>
-      <select class = selectarea v-model="searcharea">
+        <div>
+        <span class = comps>지역</span>
+        <input class = user type="text" v-model="area">
+      </div>
+      <!-- <select class = selectarea v-model="searcharea">
         <option disabled value="">지역을 선택해주세요</option>
         <option v-for="(a,i) in seoul" :key = i :value = seoul[i].name>{{seoul[i].name}}</option>
-      </select>
+      </select> -->
         <br>
         <div class = selectdatebg>
           {{date}}
@@ -112,7 +116,7 @@
 </template>
 
 <script>
-import datas from '../assets/list.js';
+// import datas from '../assets/list.js';
 import seoularea from '../assets/seoul.js';
 
 function getDatesStartToLast(startDate, lastDate) {
@@ -128,10 +132,10 @@ function getDatesStartToLast(startDate, lastDate) {
 }
 
 
-let betweendays = [];
-for(var num in datas){
-  betweendays[num] = getDatesStartToLast(datas[num].startdate, datas[num].enddate);
-}
+// let betweendays = [];
+// for(var num in datas){
+//   betweendays[num] = getDatesStartToLast(datas[num].startdate, datas[num].enddate);
+// }
 
 
 
@@ -141,9 +145,10 @@ export default {
     search : 0,
     date : '',
     searcharea : '',
-    betdays : betweendays,
+    betdays : [],//betweendays,
     today: new Date().toISOString().substr(0, 10),
-    lists : datas,
+    lists : [],//datas,
+    area:"",
     seoul : seoularea,
     cal : 0,
   }),
