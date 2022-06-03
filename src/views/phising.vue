@@ -12,27 +12,19 @@
     </v-app-bar>
 
     <div class="bg">
-      <div>
-        <div class="blank"></div>
-        <audio class="player" controls ref="player">
-          <source src="" ref="source" />
-        </audio>
+      <div style="fontSize:25px; line-height:1.6em;">
+      <div style="margin-bottom:16px;">
+* 자동 음성 녹음 기능은 제공되지 않습니다. <br/>
+* 음성 녹음 후 네이버 클로바AI앱에서 음성 파일을 텍스트로 변환 후 이용해주세요. <br/>
+</div>
+        <input type="file" id="soundFileInput" class="soundFileInput" accept=".txt" @change="onChangeTextFile" />
 
-        <input type="file" id="soundFileInput" class="soundFileInput" accept="audio/*" @change="onAudioSelected" />
-
-        <span class="file"><v-btn v-on:click="check">검사</v-btn></span>
+        <span class="file"><v-btn v-on:click="check" style="fontSize:25px;">검사</v-btn></span>
       </div>
-      <br /><br /><br />
-      <div class="texts">
-
-
-
-
-        
+      <div class="result" style="fontSize:25px;">
+      {{text}}
       </div>
-      <br />
       
-      <div class="result"></div>
       
     </div>
   </v-app>
@@ -42,29 +34,36 @@ import axios from "axios";
 export default {
   data: () => ({
     file: null,
+    text: "",
   }),
 
   computed: {},
   methods: {
     check: function (event) {
-
+       const reader = new FileReader();
+  reader.addEventListener('load', (event) => {
+    this.text = event.target.result
+  });
+  reader.readAsText(this.file,"utf-8");
     },
-    onAudioSelected(e) {
-      const uploadSound = event.target.files[0];
-      const audioSrc = window.URL.createObjectURL(uploadSound);
-      let formData = new FormData();
-      formData.append("uploadFile", event.target.files[0]);
-      var nodeURL = "http://localhost:3000/upload";
-      axios.post(nodeURL, formData)
-        .then((d) => d.data.data.body)
-        .then((d) => {
-          const {return_object} =JSON.parse(d);
-          const result =return_object.recognized 
-          console.log(result);
-        })
-        .catch((error) => console.log("error:", error));
+    onChangeTextFile(e) {
+      const txtFile = event.target.files[0];
+      const txtSrc = window.URL.createObjectURL(txtFile);
 
-      this.$refs.source.src = audioSrc;
+      // let formData = new FormData();
+      // formData.append("uploadFile", event.target.files[0]);
+      // var nodeURL = "http://localhost:3000/upload";
+      // axios.post(nodeURL, formData)
+      //   .then((d) => d.data.data.body)
+      //   .then((d) => {
+      //     const {return_object} =JSON.parse(d);
+      //     const result =return_object.recognized 
+      //     console.log(result);
+      //   })
+      //   .catch((error) => console.log("error:", error));
+
+      //this.$refs.source.src = txtSrc;
+      this.file = txtFile;
       this.$refs.player.load(); //업로드완료 후 파일로딩
       event.target.value = ""; //다른거 업로드할때를 위해 초기화
     },
@@ -100,6 +99,9 @@ export default {
   width: 100%;
   background: white;
   padding: 10px;
-  height: 7%;
+  height: 60vh;
+  margin-top: 24px;
+  white-space: pre-line;
+  overflow: scroll
 }
 </style>

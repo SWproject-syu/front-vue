@@ -1,10 +1,10 @@
 <template>
   <div class="mainbg">
     <div>
-      <router-link to="/connect"
+      <router-link to="/comparsion"
         ><v-btn style="height: 320px; font-size: 32px; font-weight: bold;" class="mainbtn"
-          >금융 상품 비교<br />(수정예정)</v-btn
-        ></router-link
+          >금융 상품 비교</v-btn>
+          </router-link
       >
       <router-link to="/phising"
         ><v-btn style="height: 320px; font-size: 32px; font-weight: bold;" class="mainbtn"
@@ -18,7 +18,7 @@
       >
 
       <router-link to="/apply"
-        ><v-btn style="float: right; height: 320px; font-size: 32px; font-weight: bold;" class="mainbtn"
+        ><v-btn style="height: 320px; font-size: 32px; font-weight: bold;" class="mainbtn"
           >자원봉사자<br/>신청</v-btn
         ></router-link
       >
@@ -29,6 +29,9 @@
 </template>
 
 <style>
+a {
+  text-decoration: none !important;
+}
 .mainbg {
   position: absolute;
   left: 50%;
@@ -41,6 +44,8 @@
   padding: 20px;
 }
 .mainbtn {
+  margin-top:10px;
+  margin-left: 10px;
   width: 48%;
   height: 40%;
 }
