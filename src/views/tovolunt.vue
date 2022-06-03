@@ -75,7 +75,7 @@ export default {
       else if (!this.location) alert("지역을 입력해주세요.(구까지)");
       else if (!this.dates[0] || !this.dates[1]) alert("자원봉사를 원하는 시작날짜와 마지막 날짜를 선택해주세요.");
       else
-        fetch("http://172.30.1.49:8081/apply", {
+        fetch("http://15.165.197.35:8081/api/members", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

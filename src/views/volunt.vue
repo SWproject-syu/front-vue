@@ -31,7 +31,7 @@
       full-width
       :min="today"
       ></v-date-picker>
-      <v-btn class = "button1" @click = "cal=0">닫기</v-btn>
+      <v-btn class = "button1" @click = "cal=0;">닫기</v-btn>
     </div>
 
     <!-- 메인 -->
@@ -154,7 +154,28 @@ export default {
   }),
   
   methods : {
-  }
+  },
+  created () {
+// [{"id":1,"createAt":null,"updateAt":null,"name":"김민성","phonenumber":"01022039894","location":"서울특별시 강북구","date":null,"startAt":"2022-06-13","endAt":"2022-06-16","dateDesc":null}]
+      fetch("http://15.165.197.35:8081/api/members", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(d=>d.json())
+          .then((response) => {
+            // 파라미터 이름 변환용
+            this.lists = response.map((item)=>{
+              return {
+                ...item,
+                phone: item.phonenumber,
+                area: item.location,
+                startdate: item.startAt,
+                enddate: item.endAt,
+              }
+            })
+          })
+          .catch((error) => console.log("error:", error));
+    }
 };
 </script>
 
