@@ -2,7 +2,7 @@
   <v-app>
     <!-- 앱 바 -->
     <v-app-bar elevation = "0" height = "55px" absolute dense color="#5882FA" dark>
-      <v-app-bar-title>자원 봉사자 연결</v-app-bar-title>
+      <v-app-bar-title style="width : 70% ">자원 봉사자 연결</v-app-bar-title>
       <v-spacer></v-spacer>
       <router-link to ="/"> <v-btn icon color="white">
         <v-icon>mdi-arrow-left</v-icon>
@@ -216,7 +216,7 @@ export default {
    float:right;
  }
  .list{
-  margin-top : 40px;
+  margin-top : 13%;
   width : 100%; background:white;
   height: 75%;
   padding-left : 20px;

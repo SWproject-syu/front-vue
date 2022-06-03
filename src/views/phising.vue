@@ -2,7 +2,7 @@
   <v-app>
     <!--앱 바-->
     <v-app-bar elevation="0" height="55px" absolute dense color="#5882FA" dark>
-      <v-app-bar-title>보이스 피싱 방지 어시스턴트</v-app-bar-title>
+      <v-app-bar-title style="width : 70% ">보이스 피싱 방지 어시스턴트</v-app-bar-title>
       <v-spacer></v-spacer>
       <router-link to="/">
         <v-btn icon color="white">
@@ -10,6 +10,8 @@
         </v-btn></router-link
       >
     </v-app-bar>
+
+     
 
     <div class="bg">
       <div style="fontSize:25px; line-height:1.6em;">
